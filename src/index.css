@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+}
+
+:root {
+  --bg: #f6f3ee;
+  --panel: #fffdf9;
+  --line: #e4ddd2;
+  --ink: #1f1b16;
+  --muted: #766d61;
+  --accent: #9a5b1f;
+  --accent-ink: #ffffff;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #141210;
+  --panel: #1d1a17;
+  --line: #302b25;
+  --ink: #ece6dc;
+  --muted: #9c9285;
+  --accent: #d9a05b;
+  --accent-ink: #1a1408;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+@layer components {
+  .inndata {
+    @apply w-full rounded-xl border border-line bg-panel px-3.5 py-3 text-base text-ink placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none;
+  }
+  .knapp {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-base font-medium transition active:scale-[0.98] disabled:opacity-50;
+  }
+  /* Brukes sammen med .knapp */
+  .knapp-primær {
+    @apply bg-accent text-accent-ink;
+  }
+  .knapp-sekundær {
+    @apply border border-line bg-panel text-ink;
+  }
+  .knapp-fare {
+    @apply bg-red-700 text-white;
+  }
+  .ikonknapp {
+    @apply inline-flex size-11 items-center justify-center rounded-full text-ink transition hover:bg-line/60 active:scale-95;
+  }
+}
